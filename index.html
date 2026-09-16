@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StroyApps — apps hechas entre código, taller y campo. Desarrollo Android independiente desde Chiapas, México." />
+  <meta name="theme-color" content="#07110d" />
+  <title>StroyApps | Código, taller y campo</title>
+
+  <link rel="icon" type="image/png" href="images/rega-icon.png">
+  <style>
+    :root{
+      --bg:#07110d;
+      --panel:#0f2119;
+      --panel2:#12281e;
+      --green:#7cff6b;
+      --green2:#28d98d;
+      --mint:#b8ffd2;
+      --cyan:#5df1e5;
+      --amber:#ffd166;
+      --text:#effff5;
+      --muted:#9bb6a7;
+      --line:rgba(184,255,210,.14);
+      --shadow:0 25px 70px rgba(0,0,0,.35);
+      --radius:26px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(40,217,141,.10), transparent 26%),
+        radial-gradient(circle at 86% 8%, rgba(93,241,229,.08), transparent 22%),
+        linear-gradient(180deg, #06100c 0%, #07110d 45%, #09160f 100%);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.14;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size:32px 32px;
+      mask-image:linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    a{color:inherit}
+    .container{width:min(1180px, calc(100% - 34px)); margin:0 auto}
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,13,.74);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav-inner{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      font-weight:900;
+      letter-spacing:.04em;
+    }
+
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(135deg, rgba(124,255,107,.22), rgba(40,217,141,.10)),
+        #0d1c15;
+      border:1px solid rgba(124,255,107,.26);
+      box-shadow:0 0 28px rgba(124,255,107,.08);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      width:72%;
+      height:2px;
+      background:linear-gradient(90deg, transparent, var(--green), transparent);
+      top:50%;
+      left:14%;
+      box-shadow:0 0 18px var(--green);
+    }
+
+    .brand-mark span{
+      position:relative;
+      z-index:2;
+      font-size:1.05rem;
+      color:var(--text);
+    }
+
+    .nav-links{display:flex; gap:24px; align-items:center}
+    .nav-links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:700;
+      font-size:.92rem;
+      transition:.2s ease;
+    }
+    .nav-links a:hover{color:var(--green)}
+
+    .nav-pill{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(124,255,107,.22);
+      background:rgba(124,255,107,.06);
+      color:var(--mint)!important;
+    }
+
+    .hero{
+      position:relative;
+      padding:86px 0 56px;
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(90deg, rgba(3,8,6,.72) 0%, rgba(4,9,7,.48) 38%, rgba(2,8,6,.58) 100%),
+        linear-gradient(180deg, rgba(3,8,6,.12) 0%, rgba(3,8,6,.30) 100%),
+        url("images/hero-codigo-taller-campo.png");
+      background-size:cover;
+      background-position:center center;
+      filter:saturate(1.04) contrast(1.03);
+      z-index:-2;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 16% 28%, rgba(124,255,107,.12), transparent 22%),
+        radial-gradient(circle at 86% 18%, rgba(93,241,229,.10), transparent 16%);
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.04fr .96fr;
+      gap:38px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(124,255,107,.24);
+      background:rgba(0,0,0,.18);
+      backdrop-filter:blur(8px);
+      color:var(--mint);
+      font-weight:800;
+      font-size:.82rem;
+      margin-bottom:18px;
+    }
+
+    .blink{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 18px rgba(124,255,107,.85);
+      animation:blink 1.35s infinite;
+    }
+
+    @keyframes blink{
+      0%,45%{opacity:1; transform:scale(1)}
+      50%,100%{opacity:.25; transform:scale(.75)}
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(3.1rem, 8.5vw, 7.1rem);
+      line-height:.88;
+      letter-spacing:-.055em;
+      text-shadow:0 8px 34px rgba(0,0,0,.35);
+    }
+
+    .glow{
+      color:var(--green);
+      text-shadow:0 0 32px rgba(124,255,107,.18);
+    }
+
+    .hero-copy{
+      margin:24px 0 0;
+      max-width:720px;
+      font-size:1.08rem;
+      line-height:1.75;
+      color:#ddeee4;
+      text-shadow:0 2px 18px rgba(0,0,0,.35);
+    }
+
+    .hero-copy strong{color:var(--text)}
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
+
+    .btn{
+      min-height:50px;
+      padding:0 18px;
+      border-radius:15px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      text-decoration:none;
+      font-weight:850;
+      border:1px solid transparent;
+      transition:.2s ease;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      color:#031009;
+      background:linear-gradient(135deg, var(--green), var(--green2));
+      box-shadow:0 14px 28px rgba(40,217,141,.13);
+    }
+
+    .btn-primary:hover{transform:translateY(-2px); filter:brightness(1.04)}
+    .btn-ghost{
+      background:rgba(0,0,0,.20);
+      border-color:rgba(255,255,255,.12);
+      color:var(--text);
+      backdrop-filter:blur(8px);
+    }
+    .btn-ghost:hover{border-color:rgba(124,255,107,.32); color:var(--green)}
+
+    .mini-line{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 18px;
+      margin-top:24px;
+      color:#d1e6da;
+      font-size:.84rem;
+      text-shadow:0 2px 10px rgba(0,0,0,.35);
+    }
+
+    .mini-line span::before{
+      content:"//";
+      color:var(--green2);
+      margin-right:7px;
+    }
+
+    .terminal{
+      position:relative;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), transparent),
+        rgba(9,22,16,.72);
+      border:1px solid rgba(124,255,107,.18);
+      border-radius:28px;
+      padding:0;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+
+    .terminal::before{
+      content:"";
+      position:absolute;
+      inset:-40% 30% auto -10%;
+      height:260px;
+      background:radial-gradient(circle, rgba(124,255,107,.11), transparent 67%);
+      pointer-events:none;
+    }
+
+    .terminal-top{
+      height:48px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 16px;
+      border-bottom:1px solid var(--line);
+      color:#b2ccbf;
+      font-size:.79rem;
+      background:rgba(255,255,255,.02);
+    }
+
+    .dots{display:flex; gap:7px}
+    .dot{width:9px; height:9px; border-radius:50%; background:#365345}
+    .dot:nth-child(2){background:#4c6e5b}
+    .dot:nth-child(3){background:var(--green2)}
+
+    .term-body{
+      padding:24px;
+      font-family:"SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size:.9rem;
+      line-height:1.8;
+      min-height:390px;
+    }
+
+    .prompt{color:var(--green)}
+    .dim{color:#b9d3c5}
+    .term-strong{color:var(--cyan)}
+    .warn{color:var(--amber)}
+    .ok{color:var(--green)}
+    .comment{color:#9ab6a7}
+
+    .ascii{
+      color:var(--green);
+      white-space:pre;
+      font-size:.69rem;
+      line-height:1.05;
+      opacity:.88;
+      margin:12px 0 20px;
+      overflow:hidden;
+    }
+
+    .marquee-wrap{
+      overflow:hidden;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,.015);
+      margin-top:22px;
+      backdrop-filter:blur(6px);
+    }
+
+    .marquee{
+      display:flex;
+      gap:42px;
+      width:max-content;
+      padding:13px 0;
+      animation:move 24s linear infinite;
+      color:#d1e6da;
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .marquee span::after{
+      content:" ✦ ";
+      color:var(--green2);
+      margin-left:42px;
+    }
+
+    @keyframes move{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
+
+    section{padding:72px 0}
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:26px;
+      margin-bottom:28px;
+    }
+
+    .kicker{
+      color:var(--green2);
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.78rem;
+      font-weight:900;
+    }
+
+    h2{
+      margin:7px 0 0;
+      font-size:clamp(2rem,5vw,3.4rem);
+      line-height:1.05;
+      letter-spacing:-.03em;
+    }
+
+    .section-head p{
+      max-width:470px;
+      color:var(--muted);
+      margin:0;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .card{
+      position:relative;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), transparent 50%),
+        var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      overflow:hidden;
+      transition:.24s ease;
+      min-height:250px;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(124,255,107,.30);
+      background:var(--panel2);
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      right:-72px;
+      top:-72px;
+      background:radial-gradient(circle, rgba(124,255,107,.08), transparent 70%);
+    }
+
+    .card-icon{
+      width:48px;
+      height:48px;
+      border-radius:15px;
+      display:grid;
+      place-items:center;
+      background:rgba(124,255,107,.08);
+      border:1px solid rgba(124,255,107,.14);
+      font-size:1.25rem;
+      margin-bottom:30px;
+    }
+
+    .card h3{margin:0 0 8px; font-size:1.14rem}
+    .card p{margin:0; color:var(--muted); font-size:.95rem}
+
+    .tag-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin-top:17px;
+    }
+
+    .tag{
+      padding:6px 9px;
+      border-radius:999px;
+      background:rgba(255,255,255,.035);
+      border:1px solid var(--line);
+      color:#86a494;
+      font-size:.72rem;
+      font-weight:800;
+    }
+
+    .project-grid{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:18px;
+    }
+
+    .rega{
+      min-height:420px;
+      background:
+        radial-gradient(circle at 90% 18%, rgba(124,255,107,.13), transparent 28%),
+        linear-gradient(135deg, #10291e, #0c1c15);
+    }
+
+    .project-badge{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(124,255,107,.08);
+      border:1px solid rgba(124,255,107,.16);
+      color:var(--mint);
+      font-size:.76rem;
+      font-weight:900;
+    }
+
+    .rega h3{
+      font-size:clamp(2.2rem,5vw,4.2rem);
+      margin:18px 0 10px;
+      line-height:.95;
+      letter-spacing:-.04em;
+    }
+
+    .rega p{max-width:650px}
+
+    .rega-stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      margin-top:26px;
+    }
+
+    .rega-stat{
+      padding:14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.035);
+      border:1px solid var(--line);
+    }
+
+    .rega-stat strong{
+      display:block;
+      color:var(--green);
+      font-size:1.25rem;
+      margin-bottom:3px;
+    }
+
+    .rega-stat span{
+      color:#83a190;
+      font-size:.75rem;
+    }
+
+    .small-stack{
+      display:grid;
+      gap:18px;
+    }
+
+    .quote-card{
+      display:flex;
+      align-items:flex-end;
+      min-height:201px;
+      background:
+        linear-gradient(145deg, rgba(93,241,229,.08), transparent 65%),
+        var(--panel);
+    }
+
+    .quote{
+      font-size:1.2rem;
+      line-height:1.45;
+      font-weight:800;
+      max-width:310px;
+    }
+
+    .quote small{
+      display:block;
+      margin-top:12px;
+      color:#728d80;
+      font-size:.76rem;
+      font-weight:700;
+    }
+
+    .timeline{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .step{
+      padding:18px;
+      border-top:2px solid rgba(124,255,107,.15);
+      background:rgba(255,255,255,.02);
+      border-radius:0 0 16px 16px;
+    }
+
+    .step span{
+      color:var(--green);
+      font-family:monospace;
+      font-size:.78rem;
+    }
+    .step h4{margin:8px 0 5px}
+    .step p{margin:0; color:var(--muted); font-size:.86rem}
+
+    .contact-box{
+      background:
+        radial-gradient(circle at 18% 30%, rgba(124,255,107,.11), transparent 32%),
+        linear-gradient(135deg, #0c2117, #0a1711);
+      border:1px solid rgba(124,255,107,.18);
+      border-radius:32px;
+      padding:36px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:30px;
+      align-items:center;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-box h2{margin:0 0 10px}
+    .contact-box p{margin:0; color:var(--muted); max-width:680px}
+
+    .email{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 18px;
+      border-radius:15px;
+      text-decoration:none;
+      background:var(--green);
+      color:#04110a;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    footer{
+      padding:34px 0 42px;
+      border-top:1px solid var(--line);
+      color:#6f8c7d;
+      font-size:.84rem;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-row a{color:var(--mint); text-decoration:none}
+
+    .secret{
+      cursor:pointer;
+      user-select:none;
+      color:#4e6a5b;
+      transition:.2s ease;
+    }
+    .secret:hover{color:var(--green)}
+    #easter{
+      display:none;
+      margin-top:10px;
+      color:var(--green);
+      font-family:monospace;
+    }
+
+    @media (max-width:930px){
+      .hero-grid,
+      .project-grid,
+      .contact-box{grid-template-columns:1fr}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .rega-stats{grid-template-columns:repeat(2,1fr)}
+      .timeline{grid-template-columns:repeat(2,1fr)}
+      .terminal{max-width:650px; width:100%}
+      .hero-bg{background-position:center center}
+    }
+
+    @media (max-width:680px){
+      .nav-links a:not(.nav-pill){display:none}
+      .hero{padding-top:54px}
+      h1{font-size:clamp(3rem,18vw,5rem)}
+      .cards{grid-template-columns:1fr}
+      .section-head{align-items:flex-start; flex-direction:column}
+      .timeline{grid-template-columns:1fr}
+      .rega-stats{grid-template-columns:1fr 1fr}
+      .contact-box{padding:24px}
+      .email{width:100%; white-space:normal; text-align:center}
+      .term-body{padding:18px; font-size:.82rem}
+      .ascii{font-size:.58rem}
+      .hero-bg{background-position:62% center}
+    }
+    .project-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+    .app-identity{display:flex;align-items:center;gap:18px;margin:20px 0}
+    .app-identity img{border-radius:20px;object-fit:contain;flex-shrink:0}
+    .app-identity h3{margin:0}
+    .scan-project{background:radial-gradient(circle at 100% 0%,rgba(105,66,205,.17),transparent 65%),linear-gradient(145deg,#12231e,#0a1512);border-color:rgba(184,255,210,.22)}
+    .compat-note{font-size:.9rem;color:var(--muted);margin-top:18px}
+    a:focus-visible{outline:3px solid var(--amber);outline-offset:5px}
+    section[id]{scroll-margin-top:110px}
+    .email{overflow-wrap:anywhere;min-width:0}
+    @media(max-width:900px){.project-grid{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio">
+        <div class="brand-mark"><span>S/J</span></div>
+        <span>StroyApps</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#estudio">El estudio</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#forma">Cómo trabajo</a>
+        <a class="nav-pill" href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <header class="hero" id="inicio">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-grid">
+
+      <div>
+        <div class="eyebrow">
+          <span class="blink"></span>
+          DESARROLLO INDEPENDIENTE · CHIAPAS, MÉXICO
+        </div>
+
+        <h1>
+          Código.<br>
+          Taller.<br>
+          <span class="glow">Campo.</span>
+        </h1>
+
+        <p class="hero-copy">
+          <strong>StroyApps</strong> es mi pequeño laboratorio de software:
+          ideas útiles convertidas en apps, herramientas y experimentos.
+          Aquí no hay un edificio lleno de corbatas; hay Android Studio,
+          pruebas en teléfonos reales, café, errores raros y la costumbre de
+          arreglar cosas hasta que por fin funcionan.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#proyectos">Ver proyectos →</a>
+          <a class="btn btn-ghost" href="mailto:soporte.rega@gmail.com">Escríbeme</a>
+        </div>
+
+        <div class="mini-line">
+          <span>Kotlin</span>
+          <span>Android</span>
+          <span>Offline first</span>
+          <span>Ideas con tierra en las botas</span>
+        </div>
+      </div>
+
+      <div class="terminal">
+        <div class="terminal-top">
+          <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <span>stroy@lab:~/ideas</span>
+        </div>
+
+        <div class="term-body">
+          <div><span class="prompt">$</span> boot stroyapps</div>
+          <div class="dim">Inicializando taller digital...</div>
+
+          <pre class="ascii">
+   ███████╗████████╗██████╗  ██████╗ ██╗   ██╗
+   ██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗╚██╗ ██╔╝
+   ███████╗   ██║   ██████╔╝██║   ██║ ╚████╔╝
+   ╚════██║   ██║   ██╔══██╗██║   ██║  ╚██╔╝
+   ███████║   ██║   ██║  ██║╚██████╔╝   ██║
+   ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝    ╚═╝
+          </pre>
+
+          <div><span class="prompt">></span> perfil: <span class="term-strong">técnico + desarrollador independiente</span></div>
+          <div><span class="prompt">></span> filosofía: <span class="ok">si puede simplificarse, se simplifica</span></div>
+          <div><span class="prompt">></span> modo: <span class="warn">beta permanente hasta nuevo aviso</span></div>
+          <div><span class="prompt">></span> proyecto_activo: <span class="term-strong">REGA</span></div>
+          <div><span class="prompt">></span> estado: <span class="ok">compilando ideas...</span></div>
+          <br>
+          <div class="comment">// Consejo del sistema:</div>
+          <div class="dim">No confiar en código que “debería funcionar”. Probarlo.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="marquee-wrap">
+      <div class="marquee">
+        <span>Android</span><span>Kotlin</span><span>Jetpack Compose</span><span>Room</span><span>UX práctica</span><span>Offline first</span><span>Hardware</span><span>Debug</span><span>Campo</span><span>Android</span><span>Kotlin</span><span>Jetpack Compose</span><span>Room</span><span>UX práctica</span><span>Offline first</span><span>Hardware</span><span>Debug</span><span>Campo</span>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+
+    <section id="estudio">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <div class="kicker">El estudio</div>
+            <h2>No hago software<br>para llenar pantallas.</h2>
+          </div>
+
+          <p>
+            Me interesan las herramientas que resuelven algo concreto:
+            registrar mejor, perder menos tiempo, trabajar sin conexión,
+            entender qué está pasando y tener el control de los datos.
+          </p>
+        </div>
+
+        <div class="cards">
+
+          <article class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Práctico antes que decorativo</h3>
+            <p>
+              Una interfaz puede verse bien y aun así estorbar. La meta es
+              que la persona llegue a lo que necesita sin pelearse con la app.
+            </p>
+            <div class="tag-row">
+              <span class="tag">UX</span>
+              <span class="tag">menos pasos</span>
+              <span class="tag">uso real</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🛠️</div>
+            <h3>Mentalidad de taller</h3>
+            <p>
+              Diagnosticar, medir, probar, corregir. La misma lógica que sirve
+              para encontrar una falla en hardware también sirve para perseguir
+              un bug extraño.
+            </p>
+            <div class="tag-row">
+              <span class="tag">debug</span>
+              <span class="tag">pruebas</span>
+              <span class="tag">iteración</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">📡</div>
+            <h3>Offline no es un detalle</h3>
+            <p>
+              Si una herramienta se usa donde la señal es irregular, seguir
+              funcionando sin Internet puede ser más importante que una nube
+              llena de funciones bonitas.
+            </p>
+            <div class="tag-row">
+              <span class="tag">local data</span>
+              <span class="tag">respaldo</span>
+              <span class="tag">control</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section id="proyectos">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <div class="kicker">Proyectos</div>
+            <h2>Construyendo cosas<br>que sí usaría.</h2>
+          </div>
+
+          <p>
+            StroyApps está empezando. Prefiero mostrar proyectos reales,
+            todavía en crecimiento, antes que llenar esta página de productos
+            que no existen.
+          </p>
+        </div>
+
+        <div class="project-grid">
+
+          <article class="card rega">
+            <div class="project-badge">🐄 PROYECTO ACTIVO · ANDROID</div>
+
+            <div class="app-identity"><img src="images/rega-icon.png" width="76" height="76" alt="Logo de REGA"><h3>REGA</h3></div>
+
+            <p>
+              Control ganadero desde el teléfono: animales, aretes, fotografías,
+              genealogía, historial, vacunación, estados, exportación y respaldos.
+              Diseñada para trabajar de forma local y seguir siendo útil incluso
+              cuando la conexión decide desaparecer.
+            </p>
+
+            <div class="rega-stats">
+              <div class="rega-stat">
+                <strong>Offline</strong>
+                <span>funcionamiento principal</span>
+              </div>
+
+              <div class="rega-stat">
+                <strong>.rega</strong>
+                <span>respaldos manuales</span>
+              </div>
+
+              <div class="rega-stat">
+                <strong>Beta</strong>
+                <span>mejorando con pruebas reales</span>
+              </div>
+
+              <div class="rega-stat">
+                <strong>Free</strong>
+                <span>con crecimiento por uso</span>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary"
+                 href="apps/rega/index.html"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                 Sitio de REGA →
+              </a>
+
+              <a class="btn btn-ghost"
+                 href="apps/rega/privacidad.html"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                 Privacidad
+              </a>
+            </div>
+          </article>
+
+          <article class="card scan-project">
+            <div class="project-badge">QR + BARRAS · ANDROID</div>
+            <div class="app-identity"><img src="images/scan-qr-facil-icon.png" width="76" height="76" alt="Logo de Scan QR Fácil"><h3>Scan QR Fácil</h3></div>
+            <p>Escanea códigos QR y de barras con tu celular y envía su contenido a la PC como pulsaciones de un teclado Bluetooth. Menos transcripción, más tiempo para trabajar.</p>
+            <div class="rega-stats">
+              <div class="rega-stat"><strong>Bluetooth</strong><span>envío al equipo seleccionado</span></div>
+              <div class="rega-stat"><strong>Secuencias</strong><span>Enter, Tab, flechas y más</span></div>
+              <div class="rega-stat"><strong>Historial</strong><span>lecturas y exportaciones</span></div>
+              <div class="rega-stat"><strong>Tokens</strong><span>recompensas voluntarias</span></div>
+            </div>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="apps/scan-qr-facil/index.html">Conocer Scan QR Fácil →</a>
+              <a class="btn btn-ghost" href="apps/scan-qr-facil/privacidad.html">Privacidad</a>
+            </div>
+            <p class="compat-note">Requiere equipos compatibles con teclado Bluetooth. La app escribe en la ventana activa de la PC.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="forma">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <div class="kicker">Cómo trabajo</div>
+            <h2>Menos ceremonia.<br>Más probar.</h2>
+          </div>
+
+          <p>
+            No busco que una primera versión sea perfecta. Busco que haga algo
+            útil, probarla en condiciones reales y mejorarla con cada vuelta.
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="step">
+            <span>01</span>
+            <h4>Detectar</h4>
+            <p>Encontrar el problema concreto antes de empezar a inventar funciones.</p>
+          </div>
+
+          <div class="step">
+            <span>02</span>
+            <h4>Construir</h4>
+            <p>Hacer una versión que ya pueda usarse y medirse en la vida real.</p>
+          </div>
+
+          <div class="step">
+            <span>03</span>
+            <h4>Romper</h4>
+            <p>Probar flujos raros, respaldos, límites, errores y escenarios inesperados.</p>
+          </div>
+
+          <div class="step">
+            <span>04</span>
+            <h4>Pulir</h4>
+            <p>Quitar fricción, mejorar detalles y repetir hasta que se sienta natural.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section id="contacto">
+      <div class="container">
+        <div class="contact-box">
+
+          <div>
+            <div class="kicker">Contacto</div>
+            <h2>¿Encontraste un bug?<br>Eso también cuenta como colaboración.</h2>
+            <p>
+              Si usas alguno de mis proyectos y algo falla, tienes una sugerencia
+              o simplemente quieres preguntar qué estoy construyendo, puedes escribir.
+            </p>
+          </div>
+
+          <a class="email" href="mailto:soporte.rega@gmail.com">
+            soporte.rega@gmail.com
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="container footer-row">
+      <div>
+        © 2026 StroyApps · Hecho desde Chiapas, México.
+      </div>
+
+      <div>
+        <a href="apps/rega/privacidad.html"
+           target="_blank"
+           rel="noopener noreferrer">
+          Privacidad de REGA
+        </a>
+        &nbsp;·&nbsp;
+        <a href="apps/scan-qr-facil/privacidad.html">Privacidad de Scan QR Fácil</a>
+        &nbsp;·&nbsp;
+        <span class="secret" onclick="showEasterEgg()">no tocar</span>
+        <div id="easter">> claramente lo tocaste 😎</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    function showEasterEgg(){
+      const el = document.getElementById("easter");
+      el.style.display = el.style.display === "block" ? "none" : "block";
+    }
+
+    const terminalLines = document.querySelectorAll(".term-body > div");
+    terminalLines.forEach((line, i) => {
+      line.style.opacity = "0";
+      line.style.transform = "translateY(4px)";
+      setTimeout(() => {
+        line.style.transition = "opacity .35s ease, transform .35s ease";
+        line.style.opacity = "1";
+        line.style.transform = "translateY(0)";
+      }, 180 + i * 110);
+    });
+  </script>
+
+</body>
+</html>
