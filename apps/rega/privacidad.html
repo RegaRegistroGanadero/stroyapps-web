@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Política de Privacidad de REGA - Control Ganadero, desarrollada por StroyApps.">
+  <meta name="robots" content="index,follow">
+  <title>Política de Privacidad | REGA - Control Ganadero</title>
+  <style>
+    :root{
+      --bg:#f4f7f4;
+      --card:#ffffff;
+      --text:#172018;
+      --muted:#59635b;
+      --green:#176b3a;
+      --green-dark:#0f4d2a;
+      --green-soft:#e9f5ed;
+      --border:#dce6df;
+      --shadow:0 10px 30px rgba(23,32,24,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.68;
+    }
+    header{
+      background:linear-gradient(135deg,var(--green-dark),var(--green));
+      color:#fff;
+      padding:54px 20px 46px;
+    }
+    .wrap{max-width:980px;margin:0 auto}
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:7px 12px;
+      border:1px solid rgba(255,255,255,.24);
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+    h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.1;margin:20px 0 12px}
+    header p{max-width:760px;margin:0;color:rgba(255,255,255,.9)}
+    main{padding:28px 20px 54px}
+    .notice,.toc,.section{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+    }
+    .notice{padding:20px 22px;margin-bottom:20px}
+    .notice strong{color:var(--green-dark)}
+    .toc{padding:22px;margin-bottom:20px}
+    .toc h2{margin-top:0}
+    .toc-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:8px 24px;
+    }
+    .toc a{
+      color:var(--green-dark);
+      text-decoration:none;
+      font-weight:650;
+    }
+    .toc a:hover{text-decoration:underline}
+    .section{padding:26px;margin-bottom:18px}
+    h2{
+      color:var(--green-dark);
+      font-size:1.35rem;
+      line-height:1.3;
+      margin:0 0 12px;
+    }
+    h3{color:var(--green-dark);margin-top:22px}
+    p{margin:10px 0}
+    ul{padding-left:22px}
+    li{margin:7px 0}
+    code{
+      background:#eef2ef;
+      padding:2px 6px;
+      border-radius:6px;
+      font-size:.95em;
+    }
+    .callout{
+      margin:18px 0;
+      padding:16px 18px;
+      border-left:4px solid var(--green);
+      background:var(--green-soft);
+      border-radius:10px;
+    }
+    .actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-block;
+      padding:11px 16px;
+      border-radius:10px;
+      background:var(--green);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+    }
+    .btn.secondary{
+      background:#fff;
+      color:var(--green-dark);
+      border:1px solid var(--border);
+    }
+    a{color:#126536}
+    footer{
+      color:var(--muted);
+      text-align:center;
+      padding:12px 20px 40px;
+      font-size:.94rem;
+    }
+    @media (max-width:640px){
+      header{padding-top:38px}
+      .section{padding:21px}
+      .toc{padding:20px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">REGA · StroyApps</div>
+    <h1>Política de Privacidad</h1>
+    <p>REGA - Control Ganadero para Android</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="notice">
+    <strong>Última actualización:</strong> 20 de octubre de 2026.<br>
+    Esta política explica qué información puede tratar REGA, para qué se utiliza, dónde puede almacenarse y cómo puede eliminarla el usuario.
+  </div>
+
+  <nav class="toc" aria-label="Contenido">
+    <h2>Contenido</h2>
+    <div class="toc-grid">
+      <a href="#responsable">1. Responsable</a>
+      <a href="#local-nube">2. Funcionamiento local y nube</a>
+      <a href="#datos">3. Datos tratados</a>
+      <a href="#cuenta">4. Cuenta REGA y Google</a>
+      <a href="#firestore">5. Firebase Cloud Firestore</a>
+      <a href="#drive">6. Google Drive</a>
+      <a href="#camara">7. Cámara y escaneo</a>
+      <a href="#notificaciones">8. Notificaciones</a>
+      <a href="#publicidad">9. Publicidad</a>
+      <a href="#compras">10. Compras y Premier</a>
+      <a href="#recompensas">11. Videos recompensados</a>
+      <a href="#terceros">12. Servicios externos</a>
+      <a href="#seguridad">13. Seguridad</a>
+      <a href="#borrar-datos">14. Borrar todos mis datos</a>
+      <a href="#eliminar-cuenta">15. Eliminar cuenta REGA</a>
+      <a href="#retencion-minima">16. Retención mínima</a>
+      <a href="#conservacion">17. Conservación</a>
+      <a href="#control">18. Control del usuario</a>
+      <a href="#transferencias">19. Transferencias</a>
+      <a href="#cambios">20. Cambios</a>
+      <a href="#contacto">21. Contacto</a>
+    </div>
+  </nav>
+
+  <section class="section" id="responsable">
+    <h2>1. Responsable y alcance</h2>
+    <p><strong>REGA - Control Ganadero</strong> es una aplicación para Android desarrollada por <strong>StroyApps</strong>, Chiapas, México. Está diseñada para ayudar a productores y responsables de ganado a registrar, organizar y consultar información relacionada con sus ranchos y animales.</p>
+    <p>Esta Política de Privacidad describe el tratamiento de información dentro de REGA y de los servicios de terceros que se integran para autenticación, sincronización, respaldo, publicidad, compras y seguridad.</p>
+    <p>Contacto de privacidad: <a href="mailto:soporte.rega@gmail.com">soporte.rega@gmail.com</a>.</p>
+  </section>
+
+  <section class="section" id="local-nube">
+    <h2>2. Funcionamiento local y uso opcional de la nube</h2>
+    <p>REGA está diseñada con un enfoque <strong>offline-first</strong>. Una parte importante de sus funciones puede utilizarse almacenando la información directamente en el dispositivo.</p>
+    <p>El usuario puede iniciar sesión con Google para utilizar funciones asociadas a una cuenta REGA, como sincronización entre dispositivos, respaldo privado en la nube, recuperación de compras y otros beneficios vinculados a la cuenta.</p>
+    <p>Cuando el usuario no utiliza funciones de nube, los registros creados localmente permanecen principalmente dentro del almacenamiento privado de la aplicación en el dispositivo.</p>
+  </section>
+
+  <section class="section" id="datos">
+    <h2>3. Información que puede tratar REGA</h2>
+    <p>Dependiendo de las funciones utilizadas, REGA puede tratar información introducida voluntariamente por el usuario, entre ella:</p>
+    <ul>
+      <li>nombre del productor;</li>
+      <li>nombre de ranchos, país, estado o región, localidad y datos relacionados;</li>
+      <li>datos de animales: aretes e identificadores, raza, sexo, fechas de nacimiento, origen, pesos, fotografías y notas;</li>
+      <li>genealogía, reproducción, nacimientos y crías;</li>
+      <li>vacunación, tratamientos, desparasitación y otros registros sanitarios de animales;</li>
+      <li>alimentación, ordeña y producción de leche;</li>
+      <li>lotes, potreros, ubicaciones y movimientos;</li>
+      <li>gastos, ingresos, precios y otros registros económicos del rancho;</li>
+      <li>otros datos o notas creados voluntariamente dentro de la aplicación.</li>
+    </ul>
+    <div class="callout"><strong>Importante:</strong> los registros sanitarios gestionados por REGA se refieren a animales y no están destinados a recopilar información médica o de salud humana.</div>
+  </section>
+
+  <section class="section" id="cuenta">
+    <h2>4. Cuenta REGA e inicio de sesión con Google</h2>
+    <p>Cuando el usuario decide iniciar sesión con Google, REGA utiliza Firebase Authentication para crear o identificar su cuenta REGA.</p>
+    <p>Dependiendo de la información proporcionada por Google y de los permisos aplicables, REGA puede recibir nombre mostrado, dirección de correo electrónico, imagen de perfil e identificador de usuario.</p>
+    <p>Firebase Authentication también puede procesar información técnica necesaria para autenticación y seguridad, como dirección IP e identificadores técnicos.</p>
+    <p>REGA utiliza el identificador de Firebase de la cuenta para mantener separados los datos y beneficios correspondientes a cada usuario.</p>
+  </section>
+
+  <section class="section" id="firestore">
+    <h2>5. Sincronización mediante Firebase Cloud Firestore</h2>
+    <p>Cuando el usuario utiliza las funciones de sincronización, los datos estructurados de REGA pueden almacenarse en Google Firebase Cloud Firestore.</p>
+    <p>Esto puede incluir ranchos, animales, pesos, registros sanitarios, alimentación, ordeña, reproducción, genealogía, ubicaciones, movimientos, registros financieros y otros datos estructurados asociados al funcionamiento de REGA.</p>
+    <p>Los datos sincronizados se vinculan al identificador de la cuenta REGA correspondiente para permitir continuidad entre dispositivos, recuperación y protección frente a pérdida accidental de registros.</p>
+  </section>
+
+  <section class="section" id="drive">
+    <h2>6. Google Drive y respaldos privados</h2>
+    <p>REGA puede solicitar autorización para utilizar el espacio privado de aplicación de Google Drive mediante el permiso <code>drive.appdata</code>.</p>
+    <p>Este espacio no corresponde a las carpetas normales visibles del usuario en Google Drive y se utiliza para datos creados por la aplicación.</p>
+    <p>REGA puede utilizarlo para guardar respaldos <code>.rega</code>, fotografías de animales, imágenes de fierros marcadores y otros archivos necesarios para sincronización o recuperación. El acceso requiere autorización de la cuenta Google correspondiente.</p>
+  </section>
+
+  <section class="section" id="camara">
+    <h2>7. Cámara, fotografías y lectura de códigos</h2>
+    <p>REGA puede solicitar acceso a la cámara cuando el usuario utiliza funciones para tomar fotografías o escanear aretes, códigos QR u otros códigos compatibles.</p>
+    <p>El permiso de cámara se solicita para estas funciones. Los códigos y textos reconocidos mediante las funciones de escaneo se procesan utilizando tecnologías de reconocimiento integradas en la aplicación.</p>
+    <p>Una imagen no se incorpora automáticamente al registro ganadero salvo que la función correspondiente requiera guardarla o el usuario decida conservarla.</p>
+    <p>Las fotografías añadidas a animales, fierros u otros registros pueden permanecer localmente y, cuando la función de nube está habilitada, pueden almacenarse también en el espacio privado de Google Drive utilizado por REGA.</p>
+  </section>
+
+  <section class="section" id="notificaciones">
+    <h2>8. Notificaciones</h2>
+    <p>REGA puede solicitar permiso para mostrar notificaciones destinadas principalmente a recordatorios y actividades programadas por el usuario, por ejemplo acciones sanitarias pendientes.</p>
+    <p>Estas funciones no requieren que REGA acceda a mensajes privados, llamadas telefónicas o contactos del dispositivo.</p>
+  </section>
+
+  <section class="section" id="publicidad">
+    <h2>9. Publicidad</h2>
+    <p>La versión gratuita de REGA puede mostrar anuncios mediante Google AdMob / Google Mobile Ads.</p>
+    <p>El SDK publicitario de Google puede procesar automáticamente información como dirección IP, que puede utilizarse para estimar una ubicación general; interacciones con la aplicación y los anuncios; información técnica y de diagnóstico; e identificadores publicitarios o del dispositivo cuando estén disponibles.</p>
+    <p>Esta información puede ser utilizada por Google para proporcionar publicidad, medición, estadísticas, seguridad y prevención de fraude de acuerdo con las configuraciones y consentimientos aplicables.</p>
+    <p>REGA utiliza las herramientas de consentimiento de Google cuando son requeridas. Los usuarios con REGA Premier pueden utilizar la aplicación sin los banners publicitarios previstos para la modalidad gratuita, de acuerdo con las condiciones vigentes del servicio.</p>
+  </section>
+
+  <section class="section" id="compras">
+    <h2>10. Compras, REGA Premier y tokens</h2>
+    <p>Las compras dentro de REGA se procesan mediante Google Play Billing.</p>
+    <p>Google Play procesa el pago y la información de facturación correspondiente. REGA no recibe ni almacena directamente números completos de tarjetas bancarias.</p>
+    <p>Para verificar compras, administrar tokens comprados, restaurar beneficios, prevenir duplicados y validar REGA Premier, REGA puede procesar datos asociados a la transacción, como identificador de producto, estado de compra, recibos o tokens técnicos de Google Play, identificador de la cuenta REGA y un identificador técnico de la instalación.</p>
+    <p>La información necesaria para el monedero y la validación de beneficios puede procesarse mediante infraestructura de REGA alojada utilizando Cloudflare Workers y D1.</p>
+  </section>
+
+  <section class="section" id="recompensas">
+    <h2>11. Videos recompensados y tokens ganados</h2>
+    <p>Cuando el usuario decide voluntariamente ver un video recompensado, Google AdMob puede procesar los datos técnicos y publicitarios descritos anteriormente.</p>
+    <p>REGA registra la información necesaria para aplicar los límites de recompensas correspondientes. Los tokens obtenidos exclusivamente mediante videos recompensados pueden estar vinculados a la instalación local y pueden perderse al eliminar los datos de la aplicación, desinstalarla o cambiar de dispositivo, de acuerdo con las condiciones mostradas dentro de REGA.</p>
+  </section>
+
+  <section class="section" id="terceros">
+    <h2>12. Servicios externos utilizados</h2>
+    <p>Para ofrecer determinadas funciones, REGA utiliza servicios proporcionados por terceros, principalmente:</p>
+    <ul>
+      <li>Google Firebase Authentication;</li>
+      <li>Google Firebase Cloud Firestore;</li>
+      <li>Google Drive;</li>
+      <li>Google Play Billing;</li>
+      <li>Google AdMob / Google Mobile Ads;</li>
+      <li>Google User Messaging Platform;</li>
+      <li>Google ML Kit;</li>
+      <li>Firebase App Check;</li>
+      <li>Cloudflare Workers y D1.</li>
+    </ul>
+    <p>Estos proveedores pueden procesar información técnica o datos necesarios para prestar sus respectivos servicios conforme a sus propias políticas, condiciones y obligaciones legales.</p>
+    <p><strong>REGA no vende los registros ganaderos ni la información personal de sus usuarios.</strong></p>
+  </section>
+
+  <section class="section" id="seguridad">
+    <h2>13. Seguridad de la información</h2>
+    <p>REGA aplica medidas técnicas destinadas a reducir el acceso no autorizado, pérdida o alteración de datos.</p>
+    <p>Las comunicaciones con servicios de nube se realizan mediante conexiones cifradas compatibles con los mecanismos de seguridad proporcionados por los respectivos proveedores. Los datos locales se almacenan en áreas privadas de la aplicación cuando corresponde.</p>
+    <p>REGA también utiliza mecanismos de validación de compras, aislamiento entre cuentas y controles destinados a evitar que los datos de una cuenta sean cargados accidentalmente en otra.</p>
+    <p>Ningún sistema informático puede garantizar seguridad absoluta. Se recomienda al usuario proteger adecuadamente el acceso a su dispositivo y a su cuenta Google.</p>
+  </section>
+
+  <section class="section" id="borrar-datos">
+    <h2>14. “Borrar todos mis datos”</h2>
+    <p>REGA dispone de una función denominada <strong>“Borrar todos mis datos”</strong>.</p>
+    <p>Esta opción elimina los datos ganaderos activos correspondientes, como ranchos, animales y registros operativos, y evita que una copia antigua sincronizada vuelva a restaurarlos automáticamente.</p>
+    <p>Esta acción <strong>no elimina la cuenta REGA</strong> y puede conservar beneficios asociados a la cuenta, como Premier, saldo de tokens comprados y herramientas desbloqueadas con compras válidas.</p>
+    <p>Como medida de recuperación frente a borrados accidentales, esta función puede conservar deliberadamente un respaldo privado de recuperación en Google Drive mientras la cuenta REGA continúe existiendo.</p>
+    <p>Por esta razón, “Borrar todos mis datos” y “Eliminar cuenta REGA” son funciones distintas.</p>
+  </section>
+
+  <section class="section" id="eliminar-cuenta">
+    <h2>15. Eliminación definitiva de la cuenta REGA</h2>
+    <p>El usuario puede iniciar la eliminación definitiva desde la propia aplicación mediante la opción <strong>“Eliminar cuenta REGA”</strong>.</p>
+    <p>Cuando el proceso se completa correctamente, REGA intenta eliminar los datos controlados directamente por el servicio y asociados a esa cuenta, incluidos:</p>
+    <ul>
+      <li>la identidad de Firebase correspondiente;</li>
+      <li>los datos estructurados almacenados en Firestore;</li>
+      <li>el monedero y beneficios vinculados a la cuenta;</li>
+      <li>los datos locales de esa cuenta;</li>
+      <li>los archivos privados creados por REGA en Google Drive;</li>
+      <li>respaldos normales y de recuperación de emergencia;</li>
+      <li>fotografías e imágenes de fierros almacenadas por REGA.</li>
+    </ul>
+    <p>REGA intenta eliminar primero los respaldos privados de Google Drive antes de eliminar definitivamente la identidad de la cuenta. Si esa limpieza no puede completarse, la aplicación puede detener el proceso para evitar informar que la eliminación fue completa cuando todavía existen copias recuperables.</p>
+    <div class="callout">
+      <strong>Suscripciones:</strong> eliminar la cuenta REGA no cancela automáticamente una suscripción activa en Google Play, no solicita reembolsos y no elimina registros de transacciones que Google deba conservar por sus propias obligaciones. Las suscripciones deben administrarse desde Google Play.
+    </div>
+    <p>Después de eliminar una cuenta REGA, iniciar sesión nuevamente puede crear una cuenta REGA nueva sin los derechos, monedero o registros eliminados de la cuenta anterior.</p>
+    <div class="actions">
+      <a class="btn" href="eliminar-cuenta.html">Eliminar o solicitar eliminación de cuenta</a>
+      <a class="btn secondary" href="mailto:soporte.rega@gmail.com?subject=Privacidad%20REGA">Contactar soporte</a>
+    </div>
+  </section>
+
+  <section class="section" id="retencion-minima">
+    <h2>16. Información mínima conservada por seguridad y prevención de fraude</h2>
+    <p>Después de eliminar una cuenta, REGA puede conservar únicamente marcadores técnicos mínimos necesarios para evitar que una compra o recibo ya utilizado sea acreditado nuevamente de forma fraudulenta.</p>
+    <p>Estos marcadores no están destinados a conservar el contenido del monedero eliminado ni el token completo de compra utilizado anteriormente.</p>
+    <p>Los proveedores externos, como Google Play, Google, Firebase o Cloudflare, también pueden conservar determinados registros durante los periodos requeridos por razones de seguridad, prevención de fraude, funcionamiento del servicio o cumplimiento de obligaciones legales conforme a sus propias políticas.</p>
+  </section>
+
+  <section class="section" id="conservacion">
+    <h2>17. Conservación de los datos</h2>
+    <p>Los datos almacenados localmente permanecen normalmente en el dispositivo mientras el usuario conserve la aplicación y no utilice las funciones de eliminación correspondientes.</p>
+    <p>Los datos sincronizados pueden mantenerse mientras exista la cuenta REGA y sean necesarios para prestar las funciones de sincronización, recuperación y continuidad entre dispositivos.</p>
+    <p>Los respaldos privados pueden permanecer en Google Drive hasta que el usuario los sustituya, utilice las funciones de borrado correspondientes o elimine definitivamente su cuenta REGA.</p>
+    <p>Los datos relacionados con compras pueden mantenerse durante el tiempo necesario para verificar compras, restaurar beneficios, gestionar reembolsos y evitar duplicidades o fraude.</p>
+  </section>
+
+  <section class="section" id="control">
+    <h2>18. Control del usuario sobre sus datos</h2>
+    <p>El usuario puede decidir si utiliza las funciones de cuenta y nube disponibles en REGA.</p>
+    <p>También puede modificar o eliminar registros desde las herramientas disponibles en la aplicación, borrar sus datos ganaderos mediante “Borrar todos mis datos”, eliminar definitivamente su cuenta mediante “Eliminar cuenta REGA” y gestionar sus opciones relacionadas con publicidad cuando la interfaz correspondiente esté disponible.</p>
+    <p>REGA proporciona además un recurso web externo para solicitar la eliminación de la cuenta y sus datos en caso de que el usuario ya no tenga instalada la aplicación o no pueda acceder a ella.</p>
+  </section>
+
+  <section class="section" id="transferencias">
+    <h2>19. Transferencias y proveedores de servicios</h2>
+    <p>Los servicios tecnológicos utilizados por REGA pueden operar infraestructura ubicada fuera del país de residencia del usuario.</p>
+    <p>Cuando se utilizan Firebase, Google Drive, Google Play, AdMob, Cloudflare u otros proveedores tecnológicos, los datos correspondientes pueden ser procesados en la infraestructura internacional de esos proveedores conforme a sus respectivas condiciones y políticas de privacidad.</p>
+  </section>
+
+  <section class="section" id="cambios">
+    <h2>20. Cambios a esta Política de Privacidad</h2>
+    <p>Esta Política de Privacidad puede actualizarse cuando cambien las funciones de REGA, los servicios utilizados, los requisitos legales o las políticas de las plataformas de distribución.</p>
+    <p>Cuando los cambios sean relevantes, se actualizará la fecha indicada al inicio de este documento y, cuando corresponda, se proporcionará información adicional dentro de REGA.</p>
+  </section>
+
+  <section class="section" id="contacto">
+    <h2>21. Contacto</h2>
+    <p>Para preguntas sobre esta Política de Privacidad, tratamiento de datos o solicitudes relacionadas con privacidad:</p>
+    <p>
+      <strong>StroyApps</strong><br>
+      Chiapas, México<br>
+      <a href="mailto:soporte.rega@gmail.com">soporte.rega@gmail.com</a>
+    </p>
+    <p>Esta política corresponde a <strong>REGA - Control Ganadero</strong> para Android.</p>
+  </section>
+</main>
+
+<footer>
+  © 2026 StroyApps · REGA - Control Ganadero
+</footer>
+</body>
+</html>
